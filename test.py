@@ -6,7 +6,7 @@ class TestHello(unittest.TestCase):
 
     def setUp(self):
         app.app.testing = True
-        self.app = app.app.test_client()
+        self.app = app.app.test_client()                # instance_name.app.test_client()
 
     def test_hello(self):
         rv = self.app.get('/')
