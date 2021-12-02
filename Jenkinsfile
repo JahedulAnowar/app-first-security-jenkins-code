@@ -13,9 +13,11 @@ pipeline {
   stages {
     stage('Build') {
       steps {
-        sh 'pip install -r requirements.txt'
-        sh 'apk add libstdc++'
-        sh 'python ./app.py &'
+        withEnv(["HOME=${env.WORKSPACE}"]) {
+         sh "pip install -r requirements.txt --user"
+         sh 'apk add libstdc++'
+         sh 'python ./app.py &'
+        }
       }
     }
     stage('Test App') {
